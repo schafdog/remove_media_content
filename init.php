@@ -25,3 +25,4 @@ class remove_media_content extends Plugin {
         return $feed_data;
     }
 }
+?>
