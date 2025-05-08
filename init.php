@@ -17,7 +17,7 @@ class remove_media_content extends Plugin {
     }
 
     function hook_feed_fetched($feed_data, $fetch_url, $owner_uid, $feed) {
-	if ($feed != 100 || $feed != 69) {
+	if ($feed != 100 || $feed != 69 || $feed != 106) {
 	   return $feed_data;
 	}
         if (!empty($feed_data)) {
