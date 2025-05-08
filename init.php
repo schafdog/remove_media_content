@@ -1,9 +1,15 @@
 <?php
 class remove_media_content extends Plugin {
+      private $host;
+      
     function about() {
         return array(1.0,
             "Remove <media:content> from feeds before parsing",
             "Dennis Schafroth");
+    }
+
+    function init($host) {
+        $host->add_hook($host::HOOK_FEED_PARSED, $this);
     }
 
     function hook_feed_parsed($feed_data, $feed_uid) {
