@@ -6,7 +6,7 @@ class remove_media_content extends Plugin {
             "Dennis Schafroth");
     }
 
-    function hook_feed_parsed($feed_data, $fetch_url, $owner_uid) {
+    function hook_feed_parsed($feed_data, $feed_uid) {
         if (!empty($feed_data['feed_data'])) {
             $doc = new DOMDocument();
             @$doc->loadXML($feed_data['feed_data']);
