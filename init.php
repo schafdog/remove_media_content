@@ -9,7 +9,9 @@ class remove_media_content extends Plugin {
     }
 
     function init($host) {
-        $host->add_hook($host::HOOK_FEED_FETCHED, $this);
+    	     $host->add_hook($host::HOOK_PREFS_EDIT_FEED, $this);
+	     $host->add_hook($host::HOOK_PREFS_SAVE_FEED, $this);
+	     $host->add_hook($host::HOOK_FEED_FETCHED, $this);
     }
 
     function api_version() {
