@@ -12,6 +12,10 @@ class remove_media_content extends Plugin {
         $host->add_hook($host::HOOK_FEED_PARSED, $this);
     }
 
+    function api_version() {
+    	return 2;
+    }
+
     function hook_feed_parsed($feed_data, $feed_uid) {
         if (!empty($feed_data['feed_data'])) {
             $doc = new DOMDocument();
