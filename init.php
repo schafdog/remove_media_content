@@ -22,7 +22,7 @@ class remove_media_content extends Plugin {
 		$enabled_feeds = $this->get_stored_array("enabled_feeds");
 		?>
 
-		<header><?= __("Readability") ?></header>
+		<header><?= __("Remove Media Content") ?></header>
 		<section>
 			<fieldset>
 				<label class='checkbox'>
