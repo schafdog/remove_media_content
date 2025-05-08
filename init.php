@@ -16,7 +16,7 @@ class remove_media_content extends Plugin {
     	return 2;
     }
 
-    function hook_feed_fetched(string $feed_data, string $feed_url, $owner_uid, $feed) : string {
+    function hook_feed_fetched($feed_data, $feed_url, $owner_uid, $feed) {
 	if ($feed != 123) {
 	   return $feed_data;
 	}
