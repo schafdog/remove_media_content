@@ -9,17 +9,20 @@ class remove_media_content extends Plugin {
     }
 
     function init($host) {
-        $host->add_hook($host::HOOK_FEED_PARSED, $this);
+        $host->add_hook($host::HOOK_FEED_FETCHED, $this);
     }
 
     function api_version() {
     	return 2;
     }
 
-    function hook_feed_parsed($feed_data, $feed_uid) {
-        if (!empty($feed_data['feed_data'])) {
+    function hook_feed_fetched(string $feed_data, string $feed_url, int $owner, int $feed_uid) {
+	if ($feed_uid != 123) {
+	   return $feed_data;
+	}
+        if (!empty($feed_data)) {
             $doc = new DOMDocument();
-            @$doc->loadXML($feed_data['feed_data']);
+            @$doc->loadXML($feed_data);
 
             $xpath = new DOMXPath($doc);
             $xpath->registerNamespace("media", "http://search.yahoo.com/mrss/");
@@ -29,7 +32,7 @@ class remove_media_content extends Plugin {
                 $node->parentNode->removeChild($node);
             }
 
-            $feed_data['feed_data'] = $doc->saveXML();
+            $feed_data = $doc->saveXML();
         }
 
         return $feed_data;
