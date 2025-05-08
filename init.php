@@ -79,5 +79,17 @@ class remove_media_content extends Plugin {
 
         return $feed_data;
     }
+
+	/**
+	 * @param string $name
+	 * @return array<int|string, mixed>
+	 * @throws PDOException
+	 * @deprecated
+	 */
+	private function get_stored_array(string $name) : array {
+		return $this->host->get_array($this, $name);
+	}
+
+
 }
 ?>
